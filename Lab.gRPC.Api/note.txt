@@ -1,0 +1,2 @@
+https://github.com/pradeept95/gRPC-AspNetCore-Example
+https://www.c-sharpcorner.com/article/crud-operation-and-microservice-communication-using-grpc-in-net-core-6-web-api/
