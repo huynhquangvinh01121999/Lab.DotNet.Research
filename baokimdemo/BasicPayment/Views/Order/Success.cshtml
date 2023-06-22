@@ -1,0 +1,15 @@
+﻿<div class="nav">
+    <div class="nav_title" style="background-color: #5bb75b">
+        <h2>Thanh toán thành công</h2>
+    </div>
+    <p>@ViewBag.Response</p>
+    <div style="background-color:whitesmoke">
+        <p>Trạng thái đơn hàng: @Model.data.stat</p>
+    </div>
+
+    <div class="submit">
+        @using (Html.BeginForm("Index", "Order"))
+        {
+<button class="btn btn-danger pm_submit">Home</button>}
+    </div>
+</div>

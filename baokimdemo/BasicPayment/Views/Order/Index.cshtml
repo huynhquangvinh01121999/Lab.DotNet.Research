@@ -1,0 +1,48 @@
+﻿@using BasicPayment.ViewModels
+@model SendOrderViewModel
+
+<!-- nav -->
+<div class="nav">
+    <div class="nav_title">Cổng thanh toán Bảo Kim</div>
+</div>
+<!--/ end nav -->
+<!-- payment -->
+<div class="payment_list">
+    <div id="select_payment">
+        @using (Html.BeginForm("Send", "Order", FormMethod.Post))
+        {
+            <div class="row-fluid customer_info" style="margin-left:25%;">
+                <div class="info">
+                    <span class="title">Thông tin thanh toán</span>
+                    <dl class="dl-horizontal">
+                        <dt>Mã đơn hàng</dt>
+                        <dd><input type="text" name="mrc_order_id" value="@DateTime.Now.ToString("yyyyMMddHHmmss")"></dd>
+                        <dt>Mô tả</dt>
+                        <dd><input type="text" name="description" value="Đóng phí đào tạo tiếng Nhật N3"></dd>
+                        <dt>Email khách hàng:</dt>
+                        <dd><input type="text" name="customer_email" value="nguyenvana@example.com"></dd>
+                        <dt>SĐT:</dt>
+                        <dd><input type="text" name="customer_phone" value="0911111000"></dd>
+                        <dt>Tên khách hàng:</dt>
+                        <dd><input type="text" name="customer_name" value="Nguyễn Văn A"></dd>
+                        <dt>Địa chỉ:</dt>
+                        <dd><input type="text" name="customer_address" value="102 Nguyễn Thái Bình"></dd>
+                        <dt>Số tiền thanh toán:</dt>
+                        <dd><input id="total_amount" type="text" name="total_amount" value="16000000" required></dd>
+                    </dl>
+                </div>
+            </div>
+
+            <div class="submit">
+                <input type="submit" class="btn btn-success pm_submit" value="Khởi tạo link thanh toán">
+            </div>
+        }
+
+        <p style="font-size:20px; font-weight:700; text-align:center; margin-top:20px;">Link thanh toán</p>
+    </div>
+    <div style="font-size:16px; text-align:center; color:dodgerblue">
+        @{ if (Model.payment_url != null)
+            { <a href="@Model.payment_url" title="@Model.payment_url">Click vào đây để tiến hành thanh toán</a> } }
+    </div>
+</div>
+<!--/ end payment -->

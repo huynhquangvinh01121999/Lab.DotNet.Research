@@ -1,0 +1,14 @@
+Tên chủ thẻ: KHACH HANG BK
+Ngân hàng: Saigonbank
+9704000000000018
+master card:
+5123450000000008
+12/25
+100
+
+-------------------
+Đơn hàng MAX: 500tr
+Phương thức quét QR: max 300tr
+Phương thức trả góp min: 3tr - max:20tr
+Phương thức BNPL min 200k
+Phương thức Momo max 20tr
