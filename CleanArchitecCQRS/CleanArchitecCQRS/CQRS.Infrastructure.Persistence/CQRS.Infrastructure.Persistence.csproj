@@ -1,0 +1,72 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <Version>1.1.0</Version>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20200627124316_Updates.cs" />
+    <Compile Remove="Migrations\20200627124316_Updates.Designer.cs" />
+    <Compile Remove="Migrations\20200724180907_New.cs" />
+    <Compile Remove="Migrations\20200724180907_New.Designer.cs" />
+    <Compile Remove="Migrations\20201121070111_addGuidField_NhanVien.cs" />
+    <Compile Remove="Migrations\20201121070111_addGuidField_NhanVien.Designer.cs" />
+    <Compile Remove="Migrations\20201121072552_addGuidField_CongTy.cs" />
+    <Compile Remove="Migrations\20201121072552_addGuidField_CongTy.Designer.cs" />
+    <Compile Remove="Migrations\20201121072726_addGuidField_CongTy.cs" />
+    <Compile Remove="Migrations\20201121072726_addGuidField_CongTy.Designer.cs" />
+    <Compile Remove="Migrations\20201121072917_addGuidField_CongTy.cs" />
+    <Compile Remove="Migrations\20201121072917_addGuidField_CongTy.Designer.cs" />
+    <Compile Remove="Migrations\20201121073948_addGuidField_CongTy.cs" />
+    <Compile Remove="Migrations\20201121073948_addGuidField_CongTy.Designer.cs" />
+    <Compile Remove="Migrations\20201130043938_add-NhanVien-foreignkey.cs" />
+    <Compile Remove="Migrations\20201130043938_add-NhanVien-foreignkey.Designer.cs" />
+    <Compile Remove="Migrations\20201130062546_cre-tb-DanhMuc-foreignkey.cs" />
+    <Compile Remove="Migrations\20201130062546_cre-tb-DanhMuc-foreignkey.Designer.cs" />
+    <Compile Remove="Migrations\20201130071631_upt-tb-tinhThanh-add-vungMien.cs" />
+    <Compile Remove="Migrations\20201130071631_upt-tb-tinhThanh-add-vungMien.Designer.cs" />
+    <Compile Remove="Migrations\20201130083723_add_from_huy.cs" />
+    <Compile Remove="Migrations\20201130083723_add_from_huy.Designer.cs" />
+    <Compile Remove="Migrations\20201207064918_re-createTable.cs" />
+    <Compile Remove="Migrations\20201207064918_re-createTable.Designer.cs" />
+    <Compile Remove="Migrations\20201207065409_re-createTable.cs" />
+    <Compile Remove="Migrations\20201207065409_re-createTable.Designer.cs" />
+    <Compile Remove="Migrations\20201207070641_re-createTable.cs" />
+    <Compile Remove="Migrations\20201207070641_re-createTable.Designer.cs" />
+    <Compile Remove="Migrations\20201207071521_foreignkey-hocvan-danhmuc.cs" />
+    <Compile Remove="Migrations\20201207071521_foreignkey-hocvan-danhmuc.Designer.cs" />
+    <Compile Remove="Migrations\20220725070032_add-tb_tonghopdulieu.cs" />
+    <Compile Remove="Migrations\20220725070032_add-tb_tonghopdulieu.Designer.cs" />
+    <Compile Remove="Migrations\20220725094138_update-tb_tonghopdulieu.cs" />
+    <Compile Remove="Migrations\20220725094138_update-tb_tonghopdulieu.Designer.cs" />
+    <Compile Remove="Migrations\20220810021835_add-tb-TangCa.cs" />
+    <Compile Remove="Migrations\20220810021835_add-tb-TangCa.Designer.cs" />
+    <Compile Remove="Migrations\20221109020453_addTable-AudTransfer.cs" />
+    <Compile Remove="Migrations\20221109020453_addTable-AudTransfer.Designer.cs" />
+    <Compile Remove="Migrations\20230208042238_addFKViecBenNgoais_NhanViens_NhanVienThayTheId.cs" />
+    <Compile Remove="Migrations\20230208042238_addFKViecBenNgoais_NhanViens_NhanVienThayTheId.Designer.cs" />
+    <Compile Remove="Migrations\20230208042720_setNotNullDiemDenId.cs" />
+    <Compile Remove="Migrations\20230208042720_setNotNullDiemDenId.Designer.cs" />
+    <Compile Remove="Migrations\20230208043352_addFKViecBenNgoais_NhanViens.cs" />
+    <Compile Remove="Migrations\20230208043352_addFKViecBenNgoais_NhanViens.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.7" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.7" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="3.1.7" />
+    <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="3.1.7" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CQRS.Application\CQRS.Application.csproj" />
+    <ProjectReference Include="..\CQRS.Domain\CQRS.Domain.csproj" />
+    <ProjectReference Include="..\CQRS.Infrastructure.Identity\CQRS.Infrastructure.Identity.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ScalarValuedFunctions\" />
+  </ItemGroup>
+
+</Project>

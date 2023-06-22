@@ -1,0 +1,17 @@
+. mrc_order_id: mã đơn hàng -> đẩy Deal_ID vào field này -> theo dõi xuyên suốt trong 1 transaction
+
+. Sau khi tạo đơn hàng -> hệ thống trả về:
+  order_id: mã đơn hàng của Bảo Kim
+  redirect_url: đường dẫn tương đối chuyển trang
+  payment_url: đường dẫn tuyệt đối chuyển trang
+=> Dựa vào payment_url để chuyển trang đến cổng thanh toán của Bảo Kim
+
+. Sau khi thanh toán thành công -> hệ thống trả về:
+  mrc_order_id: mã đơn hàng (lúc này sẽ tương ứng với Deal_ID)
+  id: mã đơn hàng của Bảo Kim
+=> Gọi API xem chi tiết thông tin giao dịch
+=> Dựa vào field "stat" trả về từ API ta xác định trạng thái đơn hàng:
+'c' -> completed > thành công
+'p' -> processing -> đang chờ thanh toán
+'d' -> destructed -> đã hủy đơn/thanh toán thất bại
+

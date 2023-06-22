@@ -1,0 +1,19 @@
+<div style="width:400px; margin: 0 auto; border-radius: 5px; border:1px solid rgb(179, 172, 172);">
+    <div style="background-color: rgba(37, 218, 61, 0.7);text-align: center;padding:3px; ">
+        <h2>Thanh toán thành công</h2>
+    </div>
+    <div style="background-color:whitesmoke; padding:5px;">
+        <p>Mã đơn hàng: {{_orderComplete.id}}</p>
+        <p>Deal_ID: {{_orderComplete.mrc_order_id.split('_')[0]}}</p>
+        <p>Số tiền: {{_orderComplete.total_amount.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}}</p>
+        <p>Trạng thái đơn hàng:
+            {{_orderComplete.stat == 'c' ? 'Hoàn tất' : _orderComplete.stat == 'p' ? 'Đang thanh toán' : 'Đã hủy'}}</p>
+    </div>
+</div>
+
+<div style="margin: 0 auto; width:max-content">
+    <button routerLink=""
+        style="padding: 10px; background-color: rgba(12, 39, 187, 0.4); cursor: pointer; border: 1px solid whitesmoke; border-radius: 5px; margin-top: 10px; font-size: 13px;">
+        Back to Home
+    </button>
+</div>

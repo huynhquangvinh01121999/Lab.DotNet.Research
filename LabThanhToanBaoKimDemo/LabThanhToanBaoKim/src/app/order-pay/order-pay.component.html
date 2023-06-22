@@ -1,0 +1,50 @@
+<div ngClass="{{isLoading ? 'loader' : 'hidden'}}"></div>
+<div style="width:500px; margin: 0 auto; border-radius: 5px; border:1px solid rgb(179, 172, 172);">
+    <div style="background-color: rgba(221, 63, 23, 0.7);text-align: center;padding:3px; color:white">
+        <h2>Thanh toán hóa đơn</h2>
+    </div>
+    <div style="background-color:whitesmoke; padding:5px; padding:10px;">
+        <div style="padding:10px;">
+            <div style="width:100px; display: inline-block;">
+                <label>Deal_ID:</label>
+            </div>
+            <input type="text" [(ngModel)]="modelOrder.mrc_order_id" style="padding:5px; width:300px;" />
+        </div>
+        <div style="padding:10px;">
+            <div style="width:100px; display: inline-block;">
+                <label>Tên ứng viên:</label>
+            </div>
+            <input type="text" [(ngModel)]="modelOrder.customer_name" style="padding:5px; width:300px;" />
+        </div>
+        <div style="padding:10px;">
+            <div style="width:100px; display: inline-block;">
+                <label>Email:</label>
+            </div>
+            <input type="text" [(ngModel)]="modelOrder.customer_email" style="padding:5px; width:300px;" />
+        </div>
+        <div style="padding:10px;">
+            <div style="width:100px; display: inline-block;">
+                <label>Số điện thoại:</label>
+            </div>
+            <input type="text" [(ngModel)]="modelOrder.customer_phone" style="padding:5px; width:300px;" />
+        </div>
+        <div style="padding:10px;">
+            <div style="width:100px; display: inline-block;">
+                <label>Mô tả:</label>
+            </div>
+            <input type="text" [(ngModel)]="modelOrder.description" style="padding:5px; width:300px;" />
+        </div>
+        <div style="padding:10px;">
+            <div style="width:100px; display: inline-block;">
+                <label>Số tiền:</label>
+            </div>
+            <input type="text" [(ngModel)]="modelOrder.total_amount" style="padding:5px; width:300px;" />
+        </div>
+    </div>
+</div>
+<div style="margin: 0 auto; width:max-content">
+    <button (click)="fnThanhToan()"
+        style="padding: 10px; background-color: rgba(12, 39, 187, 0.4); cursor: pointer; border: 1px solid whitesmoke; border-radius: 5px; margin-top: 10px; font-size: 13px;">
+        Thanh toán
+    </button>
+</div>

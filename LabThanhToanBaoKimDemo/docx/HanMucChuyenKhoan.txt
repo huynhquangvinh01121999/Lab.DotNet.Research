@@ -1,0 +1,4 @@
+Phương thức quét QR: max 300tr
+Phương thức trả góp min: 3tr - max:20tr
+Phương thức BNPL min 200k
+Phương thức Momo max 20tr

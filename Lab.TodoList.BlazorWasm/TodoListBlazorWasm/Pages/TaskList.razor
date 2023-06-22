@@ -1,0 +1,56 @@
+﻿@page "/tasks"
+@using TodoListBlazorWasm.Components
+@using Microsoft.Extensions.Configuration
+
+@inject IConfiguration Configuration
+
+@if (Tasks == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <Modal @ref="Modal"></Modal>
+    <button class="btn btn-outline-primary float-right mb-3" @onclick="() => Modal.Open()">
+        <span class="oi oi-plus" aria-hidden="true"></span> Add Todo
+    </button>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Content</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Mode</th>
+                <th>User Id</th>
+                <th>Type Name</th>
+                <th colspan="3" class="text-center">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Tasks)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.Title</td>
+                    <td>@item.Content</td>
+                    <td>@item.StartDate.ToString(Configuration["DateTimeFormat"])</td>
+                    <td>@item.EndDate.ToString(Configuration["DateTimeFormat"])</td>
+                    <td><StatusLabel Task="item"></StatusLabel></td>
+                    <td>@item.UserId.ToString().Substring(0, 13)...</td>
+                    <td>@item.TypesName</td>
+                    <td><a href="/tasks/@item.Id" class="text-decoration-none btn btn-success">Detail</a></td>
+                    <td><a href="/tasks/update/@item.Id" class="text-decoration-none btn btn-warning">Update</a></td>
+                    <td><button class="text-decoration-none btn btn-danger cursor" @onclick="() => OnRemoveTask(item.Id)">Remove</button></td>
+                    <Confirmation ConfirmationMessage="@($"Are you sure to delete task id: \'{item.Id}\'")"
+                                  ConfirmationTitle="Remove Task"
+                                  @ref="RemoveConfirmation"
+                                  ConfirmationChanged="OnRemoveTaskAsync">
+                    </Confirmation>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

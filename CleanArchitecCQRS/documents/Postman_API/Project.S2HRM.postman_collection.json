@@ -1,0 +1,542 @@
+{
+	"info": {
+		"_postman_id": "eadf00f5-238a-4203-b7fc-922cfee99538",
+		"name": "Project.S2HRM",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "PhuCaps",
+			"item": [
+				{
+					"name": "GetAll",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/PhuCap?PageNumber=1&PageSize=10&PhongId=6",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"PhuCap"
+							],
+							"query": [
+								{
+									"key": "PageNumber",
+									"value": "1"
+								},
+								{
+									"key": "PageSize",
+									"value": "10"
+								},
+								{
+									"key": "PhongId",
+									"value": "6"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAllViewHR",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/PhuCap/GetAllViewHR?PageNumber=6&PageSize=3&PhongId=6&BanId=3",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"PhuCap",
+								"GetAllViewHR"
+							],
+							"query": [
+								{
+									"key": "PageNumber",
+									"value": "6"
+								},
+								{
+									"key": "PageSize",
+									"value": "3"
+								},
+								{
+									"key": "PhongId",
+									"value": "6"
+								},
+								{
+									"key": "BanId",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetByNhanVien",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/PhuCap/GetByNhanVien?Timming=2022-09-16 00:00:00.0000000",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"PhuCap",
+								"GetByNhanVien"
+							],
+							"query": [
+								{
+									"key": "Timming",
+									"value": "2022-09-16 00:00:00.0000000"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Đăng ký phụ cấp",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"loaiPhuCapId\": 1,\r\n    \"thoiGianBatDau\": \"2022-09-26T01:53:13.120Z\",\r\n    \"thoiGianKetThuc\": \"2022-09-26T01:53:13.120Z\",\r\n    \"moTa\": \"test\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/PhuCap",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"PhuCap"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Đăng ký phụ cấp - đếm buổi",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"loaiPhuCapId\": 4,\r\n    \"thoiGianBatDau\": \"2022-09-27T06:29:23.957Z\",\r\n    \"thoiGianKetThuc\": \"2022-09-27T06:29:23.957Z\",\r\n    \"moTa\": \"test\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/PhuCap/CreatePhuCapCountDay",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"PhuCap",
+								"CreatePhuCapCountDay"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Xét duyệt phụ cấp (1+2)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"phanLoai\": \"XD1\",\r\n    \"danhSachXetDuyetPhuCap\": [\r\n        {\r\n            \"id\": \"3C0290A6-41B9-4C7A-9534-08DA9C424B0E\",\r\n            \"trangThai\": \"approval\",\r\n            \"ghiChu\": \"OK\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/PhuCap/XetDuyetPhuCap",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"PhuCap",
+								"XetDuyetPhuCap"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Xét duyệt phụ cấp - HR",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"danhSachXetDuyetPhuCap\": [\r\n    {\r\n      \"id\": \"D46C89D7-3BCC-4371-FA08-08DA9D0B2678\",\r\n      \"trangThai\": \"approval\",\r\n      \"ghiChu\": \"OK\"\r\n    }\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/PhuCap/HrXetDuyetPhuCap",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"PhuCap",
+								"HrXetDuyetPhuCap"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"loaiPhuCapId\": 1,\r\n  \"thoiGianBatDau\": \"2022-09-27T03:49:25.032Z\",\r\n  \"thoiGianKetThuc\": \"2022-09-27T03:49:25.032Z\",\r\n  \"moTa\": \"string\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/733CCA9D-46F1-465A-3069-08DA9B770A37",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"733CCA9D-46F1-465A-3069-08DA9B770A37"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}?id=733CCA9D-46F1-465A-3069-08DA9B770A37",
+							"host": [
+								"{{base_url}}"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "733CCA9D-46F1-465A-3069-08DA9B770A37"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "TangCas",
+			"item": [
+				{
+					"name": "Đăng ký tăng ca",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ngayTangCa\": \"2022-09-27T09:50:52.951Z\",\r\n    \"nhanVienId\": \"F74678F4-DB6F-4103-BF6B-BD3753942AC6\",\r\n    \"thoiGianBatDau\": \"2022-09-27T09:50:52.951Z\",\r\n    \"thoiGianKetThuc\": \"2022-09-27T09:50:52.951Z\",\r\n    \"soGioDangKy\": 10,\r\n    \"moTa\": \"string\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/TangCa",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"TangCa"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Xét duyệt tăng ca (cấp 1 + 2)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"phanLoai\": \"XD2\",\r\n    \"danhSachXetDuyetTangCa\": [\r\n        {\r\n            \"id\": \"57EE8138-5997-408B-DEEE-08DAA0F45F7A\",\r\n            \"trangThai\": \"Approval\",\r\n            \"ghiChu\": \"hrapproval\"\r\n        },\r\n        {\r\n            \"id\": \"6B900616-FFB4-4155-DEED-08DAA0F45F7A\",\r\n            \"trangThai\": \"rejected\",\r\n            \"ghiChu\": \"hrrejected\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/TangCa/XetDuyetTangCa",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"TangCa",
+								"XetDuyetTangCa"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Xét duyệt tăng ca - HR",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"danhSachHrXetDuyetTangCa\": [\r\n        {\r\n            \"id\": \"57EE8138-5997-408B-DEEE-08DAA0F45F7A\",\r\n            \"trangThai\": \"Approval\",\r\n            \"ghiChu\": \"hrapproval\"\r\n        },\r\n        {\r\n            \"id\": \"6B900616-FFB4-4155-DEED-08DAA0F45F7A\",\r\n            \"trangThai\": \"rejected\",\r\n            \"ghiChu\": \"hrrejected\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/TangCa/HrXetDuyetTangCa",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"TangCa",
+								"HrXetDuyetTangCa"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Accounts",
+			"item": [
+				{
+					"name": "Authenticate",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"vinhhq\",\r\n    \"password\": \"vinh@123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/Account/authenticate",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"Account",
+								"authenticate"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "token",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ2aW5oaHEiLCJqdGkiOiI5YjdlZTczYi03NTViLTQ2YjMtYTNiMC0yMTkzZTk2ZjA0YzMiLCJlbWFpbCI6InZpbmhocUBlc3VoYWkuY29tIiwidWlkIjoiOGQ1NzFmNTQtNGM1NS00YzljLTgwMGUtOGE2NDMzZjBhNGZmIiwiaXAiOiIxOTIuMTY4LjIuMTQ4Iiwicm9sZXMiOlsiREJOU19EZWxldGUiLCJEQk5TX1ZpZXciLCJBZG1pbiIsIkhSTV9FZGl0IiwiSFJNX0FkZCIsIlVzZXIiLCJEQk5TX0FkZCIsIlN1cGVyQWRtaW4iLCJIUk1fRGVsZXRlIiwiTW9kZXJhdG9yIiwiSFJNX1ZpZXciLCJCYXNpYyIsIkRCTlNfRWRpdCJdLCJleHAiOjE2NjQzNDA1NDUsImlzcyI6IkNvcmVJZGVudGl0eSIsImF1ZCI6IkNvcmVJZGVudGl0eVVzZXIifQ.3iY5tr8bourV_dcuD1usxxqHSRIh3-Lwm04f3DajuwA",
+			"type": "default"
+		},
+		{
+			"key": "base_url",
+			"value": "http://localhost:5000/api/v1",
+			"type": "default"
+		}
+	]
+}

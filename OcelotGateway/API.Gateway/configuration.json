@@ -1,0 +1,49 @@
+﻿{
+  "ReRoutes": [
+    {
+      "DownstreamPathTemplate": "/customer",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5001
+        }
+      ],
+      "UpstreamPathTemplate": "/gateway/customer",
+      "UpstreamHttpMethod": [ "Get" ],
+      "FileCacheOptions": {
+        "TtlSeconds": 15
+        //,"Region": "somename"
+      },
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "ApiSecurity",
+        "AllowedScopes": []
+      },
+      "RouteClaimsRequirement": {
+        "userType": "User"  // user sau khi authen có userType tương
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/product",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 6001
+        }
+      ],
+      "UpstreamPathTemplate": "/gateway/product",
+      "UpstreamHttpMethod": [ "Get" ],
+      "RateLimitOptions": {
+        "ClientWhitelist": [],
+        "EnableRateLimiting": true, // cho phép giới hạn request
+        "Period": "1s", // khoảng tg giới hạn request
+        "PeriodTimespan": 3, // tg client phải chờ để thực hiện request tiếp theo khi vượt quá limit request
+        "Limit": 1 // số request bị giới hạn trong khoảng Period
+      }
+    }
+  ],
+
+  "GlobalConfiguration": {
+  }
+}

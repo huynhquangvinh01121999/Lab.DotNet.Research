@@ -1,0 +1,107 @@
+{
+	"info": {
+		"_postman_id": "c52616f3-4fa0-4e06-8ecf-4f79fcee07a0",
+		"name": "API Ocelot Gateway",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "gateway/customer",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ2aW5oaHEiLCJqdGkiOiJiNTFlN2MyYi1jMzM4LTQ0NTktODBmNC1mZDQ5OTZjMjYxM2MiLCJlbWFpbCI6InZpbmhocUBlc3VoYWkuY29tIiwidWlkIjoiNEE2MkE4MjItMDY2Ny00RTY4LTk5NkEtNTAxMjA5MzI5ODMyIiwiaXAiOiIxOTIuMTY4LjI1LjI0Iiwicm9sZXMiOlsiTmd1b25VbmdWaWVuX0xBIiwiTmd1b25VbmdWaWVuX0JWIiwiTmd1b25VbmdWaWVuX1MiLCJOZ3VvblVuZ1ZpZW5fVEciLCJOZ3VvblVuZ1ZpZW5fQkQiLCJVc2VyIiwiTmd1b25VbmdWaWVuX1F1YW5MeU5ndW9uIl0sImV4cCI6MTY3OTM4MzMyNCwiaXNzIjoiQ29yZUlkZW50aXR5IiwiYXVkIjoiQ29yZUlkZW50aXR5VXNlciJ9.0xDscLyrmTifqx43ypg3kHtFLvhXJQ4lWZ3h1-Ac0-4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7001/gateway/customer",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7001",
+					"path": [
+						"gateway",
+						"customer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "gateway/product",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ2aW5oaHEiLCJqdGkiOiJiNTFlN2MyYi1jMzM4LTQ0NTktODBmNC1mZDQ5OTZjMjYxM2MiLCJlbWFpbCI6InZpbmhocUBlc3VoYWkuY29tIiwidWlkIjoiNEE2MkE4MjItMDY2Ny00RTY4LTk5NkEtNTAxMjA5MzI5ODMyIiwiaXAiOiIxOTIuMTY4LjI1LjI0Iiwicm9sZXMiOlsiTmd1b25VbmdWaWVuX0xBIiwiTmd1b25VbmdWaWVuX0JWIiwiTmd1b25VbmdWaWVuX1MiLCJOZ3VvblVuZ1ZpZW5fVEciLCJOZ3VvblVuZ1ZpZW5fQkQiLCJVc2VyIiwiTmd1b25VbmdWaWVuX1F1YW5MeU5ndW9uIl0sImV4cCI6MTY3OTM4MzMyNCwiaXNzIjoiQ29yZUlkZW50aXR5IiwiYXVkIjoiQ29yZUlkZW50aXR5VXNlciJ9.0xDscLyrmTifqx43ypg3kHtFLvhXJQ4lWZ3h1-Ac0-4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7001/gateway/product",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7001",
+					"path": [
+						"gateway",
+						"product"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "5001/customer",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/customer",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"customer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "6001/product",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:6001/product",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "6001",
+					"path": [
+						"product"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

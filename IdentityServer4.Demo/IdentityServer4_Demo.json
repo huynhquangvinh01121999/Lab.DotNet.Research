@@ -1,0 +1,83 @@
+{
+	"info": {
+		"_postman_id": "0211570f-e4d7-4b11-9614-957fc5376edb",
+		"name": "IdentityServer4_Demo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Token From IdentityServer 4",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "client_id",
+							"value": "m2m.client",
+							"type": "default"
+						},
+						{
+							"key": "scope",
+							"value": "scope1",
+							"type": "default"
+						},
+						{
+							"key": "client_secret",
+							"value": "511536EF-F270-4058-80CA-1C89C192F69A",
+							"type": "default"
+						},
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://localhost:5001/connect/token",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"connect",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Weatherforecast",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IkEzODA5REQyMTA1RkJEOTM0MzQzNjk4OTFDQjgyRjVEIiwidHlwIjoiYXQrand0In0.eyJuYmYiOjE2NjUzODUwOTQsImV4cCI6MTY2NTM4ODY5NCwiaXNzIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NTAwMSIsImF1ZCI6WyJ3ZWF0aGVyYXBpIiwiaHR0cHM6Ly9sb2NhbGhvc3Q6NTAwMS9yZXNvdXJjZXMiXSwiY2xpZW50X2lkIjoibTJtLmNsaWVudCIsImp0aSI6IjM5NTE4RjhDOUE5QTI4NkUzMUU2OTAzNTc5MjBDQTA2IiwiaWF0IjoxNjY1Mzg1MDk0LCJzY29wZSI6WyJ3ZWF0aGVyYXBpIl19.G0JO0vl9mJNJfZP_LcQS9axOPYwPlQhWW9r2HegAH8VLiPRG8AVHWoDA2IE0DBBXdsu2MTfzI3ulPmGzEH73T3-FXrKbmBjKXcyPJNKaplL8ZqzMG03D-zODaKTGws6dTCpy0I9OUzi0N9HtYFkQRquUCMoJTMU_YqMSi9pFb9_TrjpTw4ZrbUVYf-4_i5s5IyzymBNPUm_fIi__3h_fphn_NaMXN-7D8hdfXrP8i_l-CkJ2Woy4J_pGTwc5yHjnLbYug2cnNSbcXXjErVpin74yzSFyY9_RnFlAna9QO7FFwT4KKrAoRqWp1HMOx6RH5cUffSGZxObbZjd-ylYa9w",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44372/weatherforecast",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44372",
+					"path": [
+						"weatherforecast"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

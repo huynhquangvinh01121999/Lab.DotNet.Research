@@ -1,0 +1,26 @@
+<div style="width:1000px; margin:0 auto; border: 1px solid rgb(228, 224, 224); padding:10px; border-radius: 5px;">
+    <div>
+        Link thanh toán: <a href="{{url_thanhtoan}}">{{url_thanhtoan}}</a>
+    </div>
+
+    <div>
+        <button (click)="ThanhToan()"
+            style="padding: 10px; background-color: rgba(75, 252, 59, 0.8); cursor: pointer; border: 1px solid whitesmoke; border-radius: 5px; margin-top: 10px; font-size: 13px;">
+            Tạo link thanh toán
+        </button>
+
+        <button (click)="ViewDetail()"
+            style="padding: 10px; background-color: rgba(0, 0, 0, 0.8); color: white; cursor: pointer; border: 1px solid whitesmoke; border-radius: 5px; margin-top: 10px; font-size: 13px;">
+            Kiểm tra thanh toán
+        </button>
+    </div>
+
+    <div>
+        Trạng thái thanh toán:
+        <button
+            style="padding: 10px; background-color: rgba(248, 243, 243, 0.8); color: rgb(22, 21, 21); cursor: pointer; border: 1px solid whitesmoke; border-radius: 5px; margin-top: 10px; font-size: 13px;">
+            {{status == 'c' ? 'Hoàn thành' : status == 'p' ? 'Đang chờ thanh toán' : status == 'd' ? 'Thất bại' : ''}}
+        </button>
+    </div>
+</div>
+<div class="loader" *ngIf="isLoading"></div>

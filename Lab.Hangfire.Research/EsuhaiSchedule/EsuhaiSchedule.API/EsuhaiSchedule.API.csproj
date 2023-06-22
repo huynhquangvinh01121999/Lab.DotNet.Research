@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+	  <DocumentationFile>C:\EsuhaiSources\HRM_Backend\EsuhaiScheduleJob\EsuhaiSchedule.API.xml</DocumentationFile>
+	  <NoWarn>1701;1702;1591</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.5.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Newtonsoft" Version="5.5.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="5.5.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EsuhaiSchedule.Application\EsuhaiSchedule.Application.csproj" />
+    <ProjectReference Include="..\EsuhaiSchedule.Persistence\EsuhaiSchedule.Persistence.csproj" />
+  </ItemGroup>
+
+
+</Project>

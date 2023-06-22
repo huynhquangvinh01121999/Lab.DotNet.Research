@@ -1,0 +1,47 @@
+﻿{
+  /**
+  * Module Timesheet
+  */
+  "TIS001": "Không tìm thấy nhân viên",
+  "TIS002": "User không có quyền chấm công online.",
+  "TIS003": "User không có ca làm việc.",
+  "TIS004": "Chấm công thành công.",
+
+  /**
+  * Module Nghỉ lễ
+  */
+  "NGL001": "Ngày nghỉ lễ đã được đăng ký trước đó",
+  "NGL002": "Nghỉ lễ không tồn tại",
+
+  /**
+  * Module Cấu hình ngày công
+  */
+  "CHC001": "Cấu hình ngày công đã được đăng ký trước đó",
+  "CHC002": "Cấu hình ngày công không tồn tại",
+  "CHC003": "Tháng không hợp lệ",
+  "CHC004": "Tổng ngày công không hợp lệ",
+
+  /**
+  * Module Nghỉ phép
+  */
+  "NPH001": "Không tìm thấy đơn nghỉ phép.",
+  "NPH002": "Không tìm thấy nhân viên.",
+  "NPH003": "Không tìm thấy nhân viên thay thế.",
+  "NPH004": "Thời gian kết thúc phải lớn hơn thời gian bắt đầu.",
+  "NPH005": "Thời gian bắt đầu phải lớn hơn thời gian hiện tại.",
+  "NPH006": "Bạn không có quyền xóa đơn này.",
+  "NPH007": "Bạn không thể xóa đơn đã được xét duyệt.",
+  "NPH008": "Bạn không có quyền chỉnh sửa đơn này.",
+
+  /**
+  * Module Việc bên ngoài
+  */
+  "VBN001": "Không tìm thấy đơn đăng ký việc bên ngoài.",
+  "VBN002": "Không tìm thấy nhân viên.",
+  "VBN003": "Không tìm thấy nhân viên thay thế.",
+  "VBN004": "Không tìm thấy điểm đến.",
+  "VBN005": "Thời gian kết thúc phải lớn hơn thời gian bắt đầu.",
+  "VBN006": "Bạn không có quyền xóa đơn này.",
+  "VBN007": "Bạn không thể xóa đơn đã được xét duyệt.",
+  "VBN008": "Bạn không có quyền chỉnh sửa đơn này."
+}

@@ -1,0 +1,17 @@
+﻿@using TodoListBlazorWasm.Models;
+
+@switch (Task.Mode)
+{
+    case "public":
+        <span class="badge badge-primary">public</span>
+        break;
+
+    case "private":
+        <span class="badge badge-danger">private</span>
+        break;
+}
+
+@code {
+    [Parameter]
+    public TaskViewModel Task { get; set; }
+}

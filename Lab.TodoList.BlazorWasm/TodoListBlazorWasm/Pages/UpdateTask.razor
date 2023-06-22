@@ -1,0 +1,66 @@
+﻿@page "/tasks/update/{TaskId}"
+@using TodoListBlazorWasm.Components;
+
+@if (Task == null || Types == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+<EditForm Model="@modelUpdate" OnValidSubmit="UpdateATask">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <div class="form-group">
+        <label class="col-form-label">Id:</label>
+        <input class="form-control" value="@modelUpdate.Id" disabled />
+    </div>
+    <div class="form-group">
+        <label class="col-form-label">Title:</label>
+        <InputText class="form-control" @bind-Value="@modelUpdate.Title"></InputText>
+        <ValidationMessage For="() => modelUpdate.Title"></ValidationMessage>
+    </div>
+    <div class="form-group">
+        <label class="col-form-label">Content:</label>
+        <InputText class="form-control" @bind-Value="@modelUpdate.Content"></InputText>
+        <ValidationMessage For="() => modelUpdate.Content"></ValidationMessage>
+    </div>
+    <div class="form-group">
+        <label class="col-form-label">Start Date:</label>
+        <InputDate class="form-control" @bind-Value="@modelUpdate.StartDate"></InputDate>
+        <ValidationMessage For="() => modelUpdate.StartDate"></ValidationMessage>
+    </div>
+    <div class="form-group">
+        <label class="col-form-label">End Date:</label>
+        <InputDate class="form-control" @bind-Value="@modelUpdate.EndDate"></InputDate>
+        <ValidationMessage For="() => modelUpdate.EndDate"></ValidationMessage>
+    </div>
+    <div class="form-group">
+        <label class="col-form-label">End Date:</label>
+        <InputSelect class="form-control" @bind-Value="@modelUpdate.Mode">
+            <option value="public">Public</option>
+            <option value="private">Private</option>
+        </InputSelect>
+        <ValidationMessage For="() => modelUpdate.Mode"></ValidationMessage>
+        <small class="form-text text-muted">Choose a Mode which you want.</small>
+    </div>
+    <div class="form-group">
+        <label class="col-form-label">Type:</label>
+        <CustomInputSelect class="form-control" @bind-Value="@modelUpdate.TypeId">
+            @foreach (var item in Types)
+                {
+                <option value="@item.Id">@item.Id - @item.Name</option>
+                }
+        </CustomInputSelect>
+        <ValidationMessage For="() => modelUpdate.TypeId"></ValidationMessage>
+        <small class="form-text text-muted">Choose a Type which you want.</small>
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-secondary" @onclick="BackToList">Cancle</button>
+    </div>
+</EditForm>
+}
+
+@code {
+
+}
