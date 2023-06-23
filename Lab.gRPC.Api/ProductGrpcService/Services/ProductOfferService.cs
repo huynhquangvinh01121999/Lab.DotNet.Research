@@ -8,59 +8,59 @@ namespace ProductGrpcService.Services
 {
     public class ProductOfferService : ProductService.ProductServiceBase
     {
-        private readonly IProductOfferRepository _prductOfferService;
+        private readonly IProductRepository _prductOfferService;
         private readonly IMapper _mapper;
 
-        public ProductOfferService(IProductOfferRepository prductOfferService, IMapper mapper)
+        public ProductOfferService(IProductRepository prductOfferService, IMapper mapper)
         {
             _prductOfferService = prductOfferService;
             _mapper = mapper;
         }
 
-        public async override Task<Offers> GetOfferList(Empty request, ServerCallContext context)
+        public async override Task<Offers> GetList(Empty request, ServerCallContext context)
         {
-            var offersData = await _prductOfferService.GetOfferListAsync();
+            var offersData = await _prductOfferService.GetListAsync();
 
             Offers response = new Offers();
             foreach (Offer offer in offersData)
             {
-                response.Items.Add(_mapper.Map<OfferDetail>(offer));
+                response.Items.Add(_mapper.Map<OfferDetailViewModel>(offer));
             }
 
             return response;
         }
 
-        public async override Task<OfferDetail> GetOffer(GetOfferDetailRequest request, ServerCallContext context)
+        public async override Task<OfferDetailViewModel> GetById(GetByIdRequest request, ServerCallContext context)
         {
-            var offer = await _prductOfferService.GetOfferByIdAsync(request.ProductId);
-            var offerDetail = _mapper.Map<OfferDetail>(offer);
+            var offer = await _prductOfferService.GetByIdAsync(request.ProductId);
+            var offerDetail = _mapper.Map<OfferDetailViewModel>(offer);
             return offerDetail;
         }
 
-        public async override Task<OfferDetail> CreateOffer(CreateOfferDetailRequest request, ServerCallContext context)
+        public async override Task<OfferDetailViewModel> Create(CreateRequest request, ServerCallContext context)
         {
             var offer = _mapper.Map<Offer>(request.Offer);
 
-            await _prductOfferService.AddOfferAsync(offer);
+            await _prductOfferService.AddAsync(offer);
 
-            var offerDetail = _mapper.Map<OfferDetail>(offer);
+            var offerDetail = _mapper.Map<OfferDetailViewModel>(offer);
             return offerDetail;
         }
 
-        public async override Task<OfferDetail> UpdateOffer(UpdateOfferDetailRequest request, ServerCallContext context)
+        public async override Task<OfferDetailViewModel> Update(UpdateRequest request, ServerCallContext context)
         {
             var offer = _mapper.Map<Offer>(request.Offer);
 
-            await _prductOfferService.UpdateOfferAsync(offer);
+            await _prductOfferService.UpdateAsync(offer);
 
-            var offerDetail = _mapper.Map<OfferDetail>(offer);
+            var offerDetail = _mapper.Map<OfferDetailViewModel>(offer);
             return offerDetail;
         }
 
-        public async override Task<DeleteOfferDetailResponse> DeleteOffer(DeleteOfferDetailRequest request, ServerCallContext context)
+        public async override Task<DeleteResponse> Delete(DeleteRequest request, ServerCallContext context)
         {
-            var isDeleted = await _prductOfferService.DeleteOfferAsync(request.ProductId);
-            var response = new DeleteOfferDetailResponse
+            var isDeleted = await _prductOfferService.DeleteAsync(request.ProductId);
+            var response = new DeleteResponse
             {
                 IsDelete = isDeleted
             };

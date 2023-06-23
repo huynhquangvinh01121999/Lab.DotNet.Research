@@ -26,8 +26,7 @@ namespace ProductGrpcService
         {
             services.AddGrpc();
             services.AddDbContext<DbContextClass>(options => options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
-            services.AddScoped<IProductOfferRepository, Repositories.ProductOfferRepository>();
-            //services.AddAutoMapper(typeof(Program).Assembly);
+            services.AddScoped<IProductRepository, Repositories.ProductRepository>();
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
         }
 
