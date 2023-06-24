@@ -1,0 +1,52 @@
+syntax = "proto3";
+
+option csharp_namespace = "ProductGrpcService";
+
+package product;
+
+service ProductService {
+	rpc GetList (Empty) returns (Offers);
+	rpc GetById (GetByIdRequest) returns (OfferDetailViewModel);
+	rpc Create (CreateRequest) returns (OfferDetailViewModel);
+	rpc Update (UpdateRequest) returns (OfferDetailViewModel);
+	rpc Delete (DeleteRequest) returns (DeleteResponse);
+}
+
+message GetByIdRequest {
+	int32 productId = 1;
+}
+
+message OfferDetailViewModel {
+	int32 id = 1;
+	string productName = 2;
+	string offerDescription = 3;
+}
+
+message CreateDetailModel {
+	string productName = 1;
+	string offerDescription = 2;
+}
+
+message CreateRequest {
+	CreateDetailModel offer = 1;
+}
+
+message UpdateRequest {
+	OfferDetailViewModel offer = 1;
+}
+
+message DeleteRequest {
+	int32 productId = 1;
+}
+
+message DeleteResponse {
+	bool isDelete = 1;
+}
+
+message Empty{
+
+}
+
+message Offers {
+  repeated OfferDetailViewModel items = 1;
+}

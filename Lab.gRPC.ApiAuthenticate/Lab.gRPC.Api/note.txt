@@ -1,0 +1,3 @@
+https://learn.microsoft.com/en-us/aspnet/core/grpc/loadbalancing?view=aspnetcore-7.0
+https://github.com/jtattermusch/grpc-loadbalancing-kubernetes-examples/tree/master
+https://www.rebin.dev/post/grpc-client-side-load-balancing-indotnet/
