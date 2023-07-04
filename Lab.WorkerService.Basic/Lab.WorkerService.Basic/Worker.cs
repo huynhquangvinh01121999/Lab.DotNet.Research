@@ -36,6 +36,7 @@ namespace Lab.WorkerService.Basic
 
             _timer?.Change(Timeout.Infinite, 0);
 
+            //await base.StopAsync(cancellationToken);
             return Task.CompletedTask;
         }
 
