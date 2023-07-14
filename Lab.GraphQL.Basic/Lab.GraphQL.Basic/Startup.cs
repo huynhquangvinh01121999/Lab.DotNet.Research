@@ -1,15 +1,15 @@
+using GraphQL;
+using GraphQL.Server;
+using GraphQL.Server.Ui.Playground;
+using Lab.GraphQL.Basic.Context;
+using Lab.GraphQL.Basic.GraphQL.Schemas;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Server.Kestrel.Core;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Lab.GraphQL.Basic
 {
@@ -26,6 +26,19 @@ namespace Lab.GraphQL.Basic
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
+            services.AddDbContext<ApplicationDbContext>(options =>
+               options.UseSqlServer(
+                   Configuration.GetConnectionString("DefaultConnection"),
+                   b => b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)));
+
+            // register graphQL
+            services.AddTransient<IDependencyResolver>(x => new FuncDependencyResolver(x.GetRequiredService));
+            services.AddTransient<DemoSchema>();
+            services.AddGraphQL(o => o.ExposeExceptions = true)
+                    .AddGraphTypes(ServiceLifetime.Transient);
+            services.Configure<KestrelServerOptions>(options => options.AllowSynchronousIO = true);
+            services.Configure<IISServerOptions>(options => options.AllowSynchronousIO = true);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -41,6 +54,10 @@ namespace Lab.GraphQL.Basic
             app.UseRouting();
 
             app.UseAuthorization();
+
+            // use graphQL
+            app.UseGraphQL<DemoSchema>();
+            app.UseGraphQLPlayground(options: new GraphQLPlaygroundOptions());
 
             app.UseEndpoints(endpoints =>
             {
