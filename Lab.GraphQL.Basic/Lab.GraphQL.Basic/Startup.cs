@@ -3,6 +3,7 @@ using GraphQL.Server;
 using GraphQL.Server.Ui.Playground;
 using Lab.GraphQL.Basic.Context;
 using Lab.GraphQL.Basic.GraphQL.Schemas;
+using Lab.GraphQL.Basic.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
@@ -39,6 +40,8 @@ namespace Lab.GraphQL.Basic
                     .AddGraphTypes(ServiceLifetime.Transient);
             services.Configure<KestrelServerOptions>(options => options.AllowSynchronousIO = true);
             services.Configure<IISServerOptions>(options => options.AllowSynchronousIO = true);
+
+            services.AddTransient<ICustomerRepositoryAsync, CustomerRepositoryAsync>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
