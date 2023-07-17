@@ -1,0 +1,5 @@
+Tham khao:
+1. Getting Started with GraphQL in ASP.NET Core – Complete Guide
+https://codewithmukesh.com/blog/graphql-in-aspnet-core/
+2. Query And Mutation In GraphQL
+https://www.c-sharpcorner.com/article/query-and-mutation-in-graphql-part-two/

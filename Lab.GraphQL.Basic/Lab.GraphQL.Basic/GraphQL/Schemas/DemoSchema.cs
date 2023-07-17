@@ -10,7 +10,7 @@ namespace Lab.GraphQL.Basic.GraphQL.Schemas
         public DemoSchema(IDependencyResolver resolver) : base(resolver)
         {
             Query = resolver.Resolve<CustomerQuery>();
-            //Mutation = resolver.Resolve<CustomerMutation>();
+            Mutation = resolver.Resolve<CustomerMutation>();
         }
     }
 }

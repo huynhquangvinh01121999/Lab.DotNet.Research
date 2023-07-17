@@ -1,7 +1,6 @@
 ﻿using GraphQL;
 using GraphQL.Types;
 using Lab.GraphQL.Basic.GraphQL.Types;
-using Lab.GraphQL.Basic.Models;
 using Lab.GraphQL.Basic.Repositories;
 
 namespace Lab.GraphQL.Basic.GraphQL.Queries
@@ -26,15 +25,6 @@ namespace Lab.GraphQL.Basic.GraphQL.Queries
             Field<CustomerGraphType>("customer", "Returns a Single Customer",
                 new QueryArguments(new QueryArgument<NonNullGraphType<IntGraphType>> { Name = "id", Description = "Customer Id" }),
                     context => _customerRepositoryAsync.GetDetail(context.Arguments["id"].GetPropertyValue<int>()));
-
-            //Field<IntGraphType>("CreateCustomer", "Create Customer",
-            //    new QueryArguments(new QueryArgument<NonNullGraphType<CreateCustomerGraphType>> { Name = "CreateCustomer", Description = "Customer created" }),
-            //        context => _customerRepositoryAsync.CreateAsync(context.Arguments["CreateCustomer"].GetPropertyValue<Customer>()));
-
-            Field<IntGraphType>("CreateCustomer", "Create Customer",
-                new QueryArguments(new QueryArgument<NonNullGraphType<CreateCustomerGraphType>> { Name = "createCustomer", Description = "Customer created" }),
-                    context => _customerRepositoryAsync.CreateAsync(context.Arguments["createCustomer"].GetPropertyValue<Customer>()));
-
         }
     }
 }
