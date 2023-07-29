@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace Lab.PostgreSQL.Basic.Controllers
 {
+    [Route("api/[controller]")]
     [ApiController]
-    [Route("[controller]")]
     public class WeatherForecastController : ControllerBase
     {
         private static readonly string[] Summaries = new[]
