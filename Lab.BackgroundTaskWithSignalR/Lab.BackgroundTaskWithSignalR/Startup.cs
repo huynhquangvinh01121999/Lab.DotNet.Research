@@ -53,6 +53,7 @@ namespace Lab.BackgroundTaskWithSignalR
             {
                 endpoints.MapControllers();
                 endpoints.MapHub<SignalHub>("/hub");
+                endpoints.MapHub<ChatHub>("/hub/chat");
             });
         }
     }
