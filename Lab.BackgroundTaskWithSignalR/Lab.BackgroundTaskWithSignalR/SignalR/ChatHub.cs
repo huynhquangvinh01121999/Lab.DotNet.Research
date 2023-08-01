@@ -90,14 +90,14 @@ namespace Lab.BackgroundTaskWithSignalR.SignalR
             {
                 foreach (var connectionId in GetConnectionIds(userId))
                 {
-                    await Clients.Client(connectionId).SendAsync("ReceiveMessage", new Response<object>(new { SenderId = userId, SenderName = request.SenderName, ReceiverId = request.ReceiverId, Content = request.Content, Timming = request.Timming }));
+                    await Clients.Client(connectionId).SendAsync("ReceiveMessage", new Response<object>(new { ConversationId = request.ConversationId, SenderId = userId, SenderName = request.SenderName, ReceiverId = request.ReceiverId, Content = request.Content, Timming = request.Timming }));
                 }
 
                 if (!userId.Equals(request.ReceiverId))
                 {
                     foreach (var connectionId in GetConnectionIds(request.ReceiverId))
                     {
-                        await Clients.Client(connectionId).SendAsync("ReceiveMessage", new Response<object>(new { SenderId = userId, SenderName = request.SenderName, ReceiverId = request.ReceiverId, Content = request.Content, Timming = request.Timming }));
+                        await Clients.Client(connectionId).SendAsync("ReceiveMessage", new Response<object>(new { ConversationId = request.ConversationId, SenderId = userId, SenderName = request.SenderName, ReceiverId = request.ReceiverId, Content = request.Content, Timming = request.Timming }));
                     }
                 }
             }
@@ -110,6 +110,7 @@ namespace Lab.BackgroundTaskWithSignalR.SignalR
 
         public class MessageRequest
         {
+            public string ConversationId { get; set; }
             public string SenderName { get; set; }
             public string ReceiverId { get; set; }
             public string ReceiverName { get; set; }

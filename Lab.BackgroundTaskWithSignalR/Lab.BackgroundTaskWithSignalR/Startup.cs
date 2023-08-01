@@ -31,7 +31,7 @@ namespace Lab.BackgroundTaskWithSignalR
                                       .AllowCredentials();
                                   });
             });
-            services.AddHostedService<Worker>();
+            //services.AddHostedService<Worker>();
             services.AddSignalR();
         }
 
