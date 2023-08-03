@@ -33,6 +33,9 @@ namespace Lab.BackgroundTaskWithSignalR.SignalR
                 // thông báo đến toàn bộ client biết user x đã connection
                 await Clients.All.SendAsync("onConnected", new Response<object>(new { UserId = userId, isOnline = true }));
 
+                // thông báo cho chính user vừa connect biết có bao nhiu user đang online
+                await Clients.Client(Context.ConnectionId).SendAsync("OnGetListUserOnline", new Response<object>(new { UserOnline = usersOnline.Keys, IsOnline = true }));
+
                 // Logs thông tin trên server
                 Console.WriteLine($"{userId} connected with connection id = {Context.ConnectionId}");
 
