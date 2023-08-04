@@ -98,10 +98,15 @@ namespace Lab.BackgroundTaskWithSignalR.SignalR
 
                 if (!userId.Equals(request.ReceiverId))
                 {
+                    int cnt = 0;
                     foreach (var connectionId in GetConnectionIds(request.ReceiverId))
                     {
-                        await Clients.Client(connectionId).SendAsync("ReceiveMessage", new Response<object>(new { ConversationId = request.ConversationId, SenderId = userId, SenderName = request.SenderName, ReceiverId = request.ReceiverId, Content = request.Content, Timming = request.Timming }));
-                        await Clients.Client(connectionId).SendAsync("ReceiveNotificationMessage", new Response<object>(new { Content = $"Bạn có 1 tin nhắn mới từ {request.SenderName} vào lúc {request.Timming}" }));
+                        ++cnt;
+                        await Clients.Client(connectionId).SendAsync("ReceiveMessage", new Response<object>(new { request.ConversationId, SenderId = userId, request.SenderName, request.ReceiverId, request.Content, request.Timming }));
+
+                        // gửi thông báo cho user khi có tin nhắn mới
+                        if (cnt == 1)
+                            await Clients.Client(connectionId).SendAsync("ReceiveNotificationMessage", new Response<object>(new { Content = $"Bạn có 1 tin nhắn mới từ {request.SenderName} vào lúc {request.Timming}" }));
                     }
                 }
             }
