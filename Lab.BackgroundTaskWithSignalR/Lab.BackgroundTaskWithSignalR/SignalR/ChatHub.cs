@@ -101,6 +101,7 @@ namespace Lab.BackgroundTaskWithSignalR.SignalR
                     foreach (var connectionId in GetConnectionIds(request.ReceiverId))
                     {
                         await Clients.Client(connectionId).SendAsync("ReceiveMessage", new Response<object>(new { ConversationId = request.ConversationId, SenderId = userId, SenderName = request.SenderName, ReceiverId = request.ReceiverId, Content = request.Content, Timming = request.Timming }));
+                        await Clients.Client(connectionId).SendAsync("ReceiveNotificationMessage", new Response<object>(new { Content = $"Bạn có 1 tin nhắn mới từ {request.SenderName} vào lúc {request.Timming}" }));
                     }
                 }
             }

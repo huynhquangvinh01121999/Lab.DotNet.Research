@@ -25,7 +25,7 @@ namespace Lab.BackgroundTaskWithSignalR
                 options.AddPolicy(name: "AllowCors",
                                   builder =>
                                   {
-                                      builder.WithOrigins("http://localhost:4200")
+                                      builder.WithOrigins("http://localhost:4200", "https://chat-togerther-test.netlify.app")
                                       .AllowAnyHeader()
                                       .AllowAnyMethod()
                                       .AllowCredentials();
