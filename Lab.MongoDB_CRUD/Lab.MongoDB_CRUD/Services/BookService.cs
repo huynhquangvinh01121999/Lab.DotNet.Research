@@ -18,25 +18,25 @@ namespace Lab.SignalR_Chat.BE.Services
             _books = database.GetCollection<Book>(settings.CollectionName);
         }
 
-        public async Task<List<Book>> Get() =>
+        public async Task<List<Book>> GetAsync() =>
             await _books.Find(book => true).ToListAsync();
 
-        public async Task<Book> Get(string id) =>
+        public async Task<Book> GetAsync(string id) =>
             await _books.Find<Book>(book => book.Id == id).FirstOrDefaultAsync();
 
-        public async Task<Book> Create(Book book)
+        public async Task<Book> CreateAsync(Book book)
         {
             await _books.InsertOneAsync(book);
             return book;
         }
 
-        public async Task Update(string id, Book bookIn) =>
+        public async Task UpdateAsync(string id, Book bookIn) =>
             await _books.ReplaceOneAsync(book => book.Id == id, bookIn);
 
-        public async Task Remove(Book bookIn) =>
+        public async Task RemoveAsync(Book bookIn) =>
             await _books.DeleteOneAsync(book => book.Id == bookIn.Id);
 
-        public async Task Remove(string id) =>
+        public async Task RemoveAsync(string id) =>
             await _books.DeleteOneAsync(book => book.Id == id);
     }
 }
