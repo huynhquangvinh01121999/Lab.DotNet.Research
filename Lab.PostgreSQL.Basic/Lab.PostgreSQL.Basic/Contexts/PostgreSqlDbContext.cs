@@ -11,9 +11,12 @@ namespace Lab.PostgreSQL.Basic.Contexts
 
         public DbSet<Product> Products { get; set; }
 
-        protected override void OnModelCreating(ModelBuilder builder)
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            base.OnModelCreating(builder);
+            // Xác định tên schema cho bảng "Products"
+            modelBuilder.Entity<Product>().ToTable("products", schema: "dbo");
+
+            base.OnModelCreating(modelBuilder);
         }
 
         public override int SaveChanges()

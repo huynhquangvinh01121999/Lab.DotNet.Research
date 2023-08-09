@@ -1,16 +1,16 @@
-using Lab.PostgreSQL.Basic.Contexts;
-using Lab.PostgreSQL.Basic.Repositories;
+using Lab.SignalR_Chat.BE.Logging;
+using Lab.SignalR_Chat.BE.Services;
+using Lab.SignalR_Chat.BE.Settings;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
-using System;
 using System.Collections.Generic;
 
-namespace Lab.PostgreSQL.Basic
+namespace Lab.SignalR_Chat.BE
 {
     public class Startup
     {
@@ -23,21 +23,16 @@ namespace Lab.PostgreSQL.Basic
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson(options => options.UseMemberCasing());
 
+            // swagger
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo
                 {
                     Version = "v1",
-                    Title = "PostgreSQL Basic WebApi",
+                    Title = "Chat - WebApi",
                     Description = "This Api will be responsible for overall data distribution and authorization.",
-                    Contact = new OpenApiContact
-                    {
-                        Name = "codewithmukesh",
-                        Email = "hello@codewithmukesh.com",
-                        Url = new Uri("https://codewithmukesh.com/contact"),
-                    }
                 });
                 c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
                 {
@@ -66,31 +61,46 @@ namespace Lab.PostgreSQL.Basic
                 });
             });
 
-            services.AddDbContext<PostgreSqlDbContext>(optionsBuilder =>
-                optionsBuilder.UseNpgsql(Configuration.GetConnectionString("DefaultConnection"),
-                options => options.EnableRetryOnFailure()));
+            // cors
+            services.AddCors(options =>
+            {
+                options.AddPolicy(name: "AllowCors",
+                                  builder =>
+                                  {
+                                      builder.WithOrigins("http://localhost:4200")
+                                      .AllowAnyHeader()
+                                      .AllowAnyMethod()
+                                      .AllowCredentials();
+                                  });
+            });
 
-            services.AddTransient<IProductRepositoryAsync, ProductRepositoryAsync>();
+            // config mongodb
+            services.Configure<MongoDBSettings>(Configuration.GetSection(nameof(MongoDBSettings)));
+
+            // dependency
+            services.AddTransient<IMemoriesLog, MemoriesLog>();
+            services.AddSingleton<IMongoDBSettings>(sp => sp.GetRequiredService<IOptions<MongoDBSettings>>().Value);
+            services.AddSingleton<BookService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
-            {
                 app.UseDeveloperExceptionPage();
-            }
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Chat.WebApi");
+            });
+
+            app.UseCors("AllowCors");
 
             app.UseHttpsRedirection();
 
             app.UseRouting();
 
             app.UseAuthorization();
-
-            app.UseSwagger();
-            app.UseSwaggerUI(c =>
-            {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "PostgreSQL Basic");
-            });
 
             app.UseEndpoints(endpoints =>
             {

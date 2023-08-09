@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 
-namespace Lab.PostgreSQL.Basic
+namespace Lab.SignalR_Chat.BE
 {
     public class Program
     {

@@ -1,0 +1,63 @@
+[{
+  "_id": {
+    "$oid": "64d20bcd1fe28b21568f857c"
+  },
+  "Name": "Doraemon",
+  "Price": 19000,
+  "Category": "Truyện tranh",
+  "Author": "Tokuda"
+},
+{
+  "_id": {
+    "$oid": "64d20c4d1fe28b21568f857d"
+  },
+  "Name": "Conan",
+  "Price": 19000,
+  "Category": "Truyện tranh",
+  "Author": "Yui Hatano"
+},
+{
+  "_id": {
+    "$oid": "64d20ca0a02bd007e2161bfb"
+  },
+  "Name": "7 viên ngọc rồng",
+  "Price": "25000",
+  "Category": "truyện tranh",
+  "Author": "Trà Sensei"
+},
+{
+  "_id": {
+    "$oid": "64d20ccfa02bd007e2161bfc"
+  },
+  "Name": "8 viên ngọc rồng",
+  "Price": "125000",
+  "Category": "truyện tranh",
+  "Author": "Trà Sensei"
+},
+{
+  "_id": {
+    "$oid": "64d20ceda02bd007e2161bfd"
+  },
+  "Name": "9 viên ngọc rồng",
+  "Price": "125000",
+  "Category": "truyện tranh",
+  "Author": "Trà Sensei"
+},
+{
+  "_id": {
+    "$oid": "64d20e18a02bd007e2161bfe"
+  },
+  "Name": "Design Patterns",
+  "Price": "54.94",
+  "Category": "Computers",
+  "Author": "Ralph Johnson"
+},
+{
+  "_id": {
+    "$oid": "64d20e22a02bd007e2161bff"
+  },
+  "Name": "Clean Code",
+  "Price": "43.15",
+  "Category": "Computers",
+  "Author": "Robert C. Martin"
+}]
