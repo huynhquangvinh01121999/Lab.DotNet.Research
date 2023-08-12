@@ -1,0 +1,50 @@
+﻿@page "/tasks/update/{TaskId}"
+
+@if (Task == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+<EditForm Model="@Task" OnValidSubmit="UpdateATask">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <div class="form-group">
+        <label class="col-form-label">Id:</label>
+        <input class="form-control" value="@Task.Id" disabled />
+    </div>
+    <div class="form-group">
+        <label class="col-form-label">Title:</label>
+        <InputText class="form-control" @bind-Value="@Task.Title"></InputText>
+        <ValidationMessage For="() => Task.Title"></ValidationMessage>
+    </div>
+    <div class="form-group">
+        <label class="col-form-label">Content:</label>
+        <InputText class="form-control" @bind-Value="@Task.Content"></InputText>
+        <ValidationMessage For="() => Task.Content"></ValidationMessage>
+    </div>
+    <div class="form-group">
+        <label class="col-form-label">Start Date:</label>
+        <InputDate class="form-control" @bind-Value="@Task.StartDate"></InputDate>
+        <ValidationMessage For="() => Task.StartDate"></ValidationMessage>
+    </div>
+    <div class="form-group">
+        <label class="col-form-label">End Date:</label>
+        <InputDate class="form-control" @bind-Value="@Task.EndDate"></InputDate>
+        <ValidationMessage For="() => Task.EndDate"></ValidationMessage>
+    </div>
+    <div class="form-group">
+        <label class="col-form-label">End Date:</label>
+        <InputSelect class="form-control" @bind-Value="@Task.Mode">
+            <option value="public">Public</option>
+            <option value="private">Private</option>
+        </InputSelect>
+        <ValidationMessage For="() => Task.Mode"></ValidationMessage>
+        <small class="form-text text-muted">Choose a Mode which you want.</small>
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-secondary" @onclick="BackToList">Cancle</button>
+    </div>
+</EditForm>
+}
