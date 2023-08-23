@@ -4,6 +4,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System;
+using System.Net.Http;
 using WebAssemblyServer.Contexts;
 using WebAssemblyServer.Data;
 using WebAssemblyServer.Data.Interfaces;
@@ -29,6 +31,13 @@ namespace WebAssemblyServer
 
             services.AddSingleton<WeatherForecastService>();
             services.AddScoped<ITodoService, TodoService>();
+
+            services.AddScoped(sp => new HttpClient
+            {
+                BaseAddress = new Uri("https://jsonplaceholder.typicode.com")
+            });
+
+            services.AddAntDesign();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

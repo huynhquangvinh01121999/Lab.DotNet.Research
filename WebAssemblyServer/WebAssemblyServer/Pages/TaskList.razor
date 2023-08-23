@@ -2,6 +2,9 @@
 @using WebAssemblyServer.Components
 @using Microsoft.Extensions.Configuration
 
+@using System.ComponentModel
+@using AntDesign.TableModels
+
 @inject IConfiguration Configuration
 
 @if (Tasks == null)
@@ -10,43 +13,63 @@
 }
 else
 {
-    <Modal @ref="Modal"></Modal>
-    <button class="btn btn-outline-primary float-right mb-3" @onclick="() => Modal.Open()">
-        <span class="oi oi-plus" aria-hidden="true"></span> Add Todo
-    </button>
+    <WebAssemblyServer.Components.Modal @ref="Modal"></WebAssemblyServer.Components.Modal>
+    <Button Type="@ButtonType.Default" @onclick="() => Modal.Open()" class="float-right mb-3">Add Todo</Button>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Title</th>
-                <th>Content</th>
-                <th>Start Date</th>
-                <th>End Date</th>
-                <th colspan="3">Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Tasks)
-            {
+    <Table TItem="WebAssemblyServer.Entities.TodosList" DataSource="@Tasks" Loading="Tasks==null" ScrollX="1500" PageSize="5" Size="TableSize.Small">
+        <Column @bind-Field="@context.Id">
+            <a>@context.Id</a>
+        </Column>
+        <Column @bind-Field="@context.Title">
+            <span>@context.Title</span>
+        </Column>
+        <Column @bind-Field="@context.Content">
+            <span>@context.Content</span>
+        </Column>
+        <Column @bind-Field="@context.StartDate">
+            <span>@context.StartDate.ToString(Configuration["DateTimeFormat"])</span>
+        </Column>
+        <Column @bind-Field="@context.EndDate">
+            <span>@context.EndDate.ToString(Configuration["DateTimeFormat"])</span>
+        </Column>
+    </Table>
+
+    @*<button class="btn btn-outline-primary float-right mb-3" @onclick="() => Modal.Open()">
+            <span class="oi oi-plus" aria-hidden="true"></span> Add Todo
+        </button>*@
+
+    @*<table class="table">
+            <thead>
                 <tr>
-                    <td>@item.Id</td>
-                    <td>@item.Title</td>
-                    <td>@item.Content</td>
-                    <td>@item.StartDate.ToString(Configuration["DateTimeFormat"])</td>
-                    <td>@item.EndDate.ToString(Configuration["DateTimeFormat"])</td>
-                    <td>
-                        <a href="/tasks/@item.Id" class="text-decoration-none btn btn-success" style="width:80px">Detail</a>
-                        <a href="/tasks/update/@item.Id" class="text-decoration-none btn btn-warning" style="width:80px">Update</a>
-                        <button class="text-decoration-none btn btn-danger cursor" @onclick="() => OnRemoveTask(item.Id)" style="width:80px">Remove</button>
-                    </td>
-                    <Confirmation ConfirmationMessage="@($"Are you sure to delete task id: \'{item.Id}\'")"
-                                  ConfirmationTitle="Remove Task"
-                                  @ref="RemoveConfirmation"
-                                  ConfirmationChanged="OnRemoveTaskAsync">
-                    </Confirmation>
+                    <th>Id</th>
+                    <th>Title</th>
+                    <th>Content</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th colspan="3">Actions</th>
                 </tr>
-            }
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                @foreach (var item in Tasks)
+                {
+                    <tr>
+                        <td>@item.Id</td>
+                        <td>@item.Title</td>
+                        <td>@item.Content</td>
+                        <td>@item.StartDate.ToString(Configuration["DateTimeFormat"])</td>
+                        <td>@item.EndDate.ToString(Configuration["DateTimeFormat"])</td>
+                        <td>
+                            <a href="/tasks/@item.Id" class="text-decoration-none btn btn-success" style="width:80px">Detail</a>
+                            <a href="/tasks/update/@item.Id" class="text-decoration-none btn btn-warning" style="width:80px">Update</a>
+                            <button class="text-decoration-none btn btn-danger cursor" @onclick="() => OnRemoveTask(item.Id)" style="width:80px">Remove</button>
+                        </td>
+                        <Confirmation ConfirmationMessage="@($"Are you sure to delete task id: \'{item.Id}\'")"
+                                      ConfirmationTitle="Remove Task"
+                                      @ref="RemoveConfirmation"
+                                      ConfirmationChanged="OnRemoveTaskAsync">
+                        </Confirmation>
+                    </tr>
+                }
+            </tbody>
+        </table>*@
 }

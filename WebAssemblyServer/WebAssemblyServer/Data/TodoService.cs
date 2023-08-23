@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 using WebAssemblyServer.Contexts;
 using WebAssemblyServer.Data.Interfaces;
@@ -11,10 +13,12 @@ namespace WebAssemblyServer.Data
     public class TodoService : ITodoService
     {
         private readonly AppDbContext _dbContext;
+        private HttpClient _httpClient;
 
-        public TodoService(AppDbContext dbContext)
+        public TodoService(AppDbContext dbContext, HttpClient httpClient)
         {
             _dbContext = dbContext;
+            _httpClient = httpClient;
         }
 
         public async Task<TodosList> CreateTodoAsync(TodosList todo)
@@ -49,6 +53,25 @@ namespace WebAssemblyServer.Data
 
         public async Task<IEnumerable<TodosList>> GetTodosAsync()
         {
+            //var response = await _httpClient.GetAsync("/users");
+
+            //if (response.IsSuccessStatusCode)
+            //{
+            //    string result = await response.Content.ReadAsStringAsync();
+            //}
+
+            string json = JsonConvert.SerializeObject(new { userId = 101, title = "abc", completed = false });
+            StringContent httpContent = new StringContent(json, System.Text.Encoding.UTF8, "application/json");
+
+            var response = await _httpClient.PostAsync("/todos", httpContent);
+
+            if (response.IsSuccessStatusCode)
+            {
+                string result = await response.Content.ReadAsStringAsync();
+            }
+
+            //    var taskViewModel = JsonSerializer.Deserialize<TaskViewModel>(returnValue, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+
             var results = from s in _dbContext.TodoLists
                           select s;
             return await results
