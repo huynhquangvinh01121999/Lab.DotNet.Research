@@ -27,6 +27,7 @@ namespace Api.Test
         //}
 
         // initial test
+        // thực thi khi test run
         [TestInitialize]
         public void Setup()
         {
@@ -35,14 +36,27 @@ namespace Api.Test
             _weatherForecastService = new WeatherForecastService();
         }
 
+        [AssemblyInitialize]
+        public static void AssemblyInit(TestContext context)
+        {
+            // thực thi function trước khi test run
+        }
+        [ClassInitialize]
+        public static void TestFixtureSetup(TestContext context)
+        {
+            // thực thi khi class được khởi tạo
+        }
+
         [TestMethod]
+        [Description("Mô tả method test")]
+        [TestCategory("Loại method")]
         [DataRow(0, DisplayName = "GetWeatherForeCast Testing")]
         public async Task TestGetWeatherForeCast(int counter)
         {
             var results = await _weatherForecastService.WeatherForecasts(Summaries);
 
             // case 1: data có null ko?
-            Assert.IsNotNull(results, "WeatherForecasts is null");
+            Assert.IsNull(results, "WeatherForecasts is null");
 
             // case 2: số lượng record có > 0 ko?
             Assert.IsTrue(results.Count > counter, "WeatherForecasts is empty");
@@ -56,6 +70,7 @@ namespace Api.Test
             }
         }
 
+        // Method test API
         [TestMethod]
         public async Task TestApiEndpoint()
         {
