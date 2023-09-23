@@ -52,7 +52,8 @@ namespace IdentityServer4.Demo
                 .AddInMemoryApiResources(Config.ApiResources)
                 .AddInMemoryApiScopes(Config.ApiScopes)
                 .AddAspNetIdentity<ApplicationUser>()
-                .AddDeveloperSigningCredential();
+                .AddDeveloperSigningCredential()
+                .AddTestUsers(Users.Get());
 
             // not recommended for production - you need to store your key material somewhere secure
             builder.AddDeveloperSigningCredential();

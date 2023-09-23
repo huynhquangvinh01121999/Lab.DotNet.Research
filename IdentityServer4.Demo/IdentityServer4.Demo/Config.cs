@@ -2,8 +2,11 @@
 // Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
 
 
+using IdentityModel;
 using IdentityServer4.Models;
+using IdentityServer4.Test;
 using System.Collections.Generic;
+using System.Security.Claims;
 
 namespace IdentityServer4.Demo
 {
@@ -12,22 +15,28 @@ namespace IdentityServer4.Demo
         public static IEnumerable<IdentityResource> IdentityResources =>
                    new IdentityResource[]
                    {
-                new IdentityResources.OpenId(),
-                new IdentityResources.Profile(),
+                        new IdentityResources.OpenId(),
+                        new IdentityResources.Profile(),
+                        new IdentityResources.Email(),
+                        new IdentityResource
+                        {
+                            Name = "role",
+                            UserClaims = new List<string> {"role"}
+                        }
                    };
 
         public static IEnumerable<ApiScope> ApiScopes =>
             new ApiScope[]
             {
-                new ApiScope("weatherapi"),
-                new ApiScope("scope2"),
+                new ApiScope("scope.read"),
+                new ApiScope("scope.write"),
             };
 
         public static IEnumerable<ApiResource> ApiResources => new[]
         {
             new ApiResource("weatherapi")
             {
-                Scopes = new List<string> { "weatherapi", "scope2" },
+                Scopes = new List<string> { "scope.read", "scope.write" },
                 ApiSecrets = new List<Secret> { new Secret("ScopeSecret".Sha256()) },
                 UserClaims = new List<string> {"role"}
             }
@@ -45,7 +54,7 @@ namespace IdentityServer4.Demo
                     AllowedGrantTypes = GrantTypes.ClientCredentials,
                     ClientSecrets = { new Secret("511536EF-F270-4058-80CA-1C89C192F69A".Sha256()) },
 
-                    AllowedScopes = { "weatherapi" }
+                    AllowedScopes = { "weatherapi", "scope2" }
                 },
 
                 // interactive client using code flow + pkce
@@ -61,8 +70,26 @@ namespace IdentityServer4.Demo
                     PostLogoutRedirectUris = { "https://localhost:44300/signout-callback-oidc" },
 
                     AllowOfflineAccess = true,
-                    AllowedScopes = { "openid", "profile", "scope2" }
+                    AllowedScopes = { "openid", "profile" }
                 },
             };
+    }
+
+    internal class Users
+    {
+        public static List<TestUser> Get()
+        {
+            return new List<TestUser> {
+           new TestUser {
+            SubjectId = "5BE86359-073C-434B-AD2D-A3932222DABE",
+            Username = "vinhhq",
+            Password = "vinh123",
+            Claims = new List<Claim> {
+             new Claim(JwtClaimTypes.Email, "vinhhq@gmail.com"),
+             new Claim(JwtClaimTypes.Role, "admin")
+            }
+           }
+          };
+        }
     }
 }
