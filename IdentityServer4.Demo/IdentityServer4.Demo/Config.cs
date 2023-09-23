@@ -36,7 +36,9 @@ namespace IdentityServer4.Demo
         {
             new ApiResource("weatherapi")
             {
-                Scopes = new List<string> { "scope.read", "scope.write" },
+                //Scopes = new List<string> { "scope.read", "scope.write" },    // api weather chỉ nhận token từ scope.read & scope.write
+                //Scopes = new List<string> { "scope.read" },   // api weather chỉ nhận token từ scope.read
+                Scopes = new List<string> { "scope.write" },    // api weather chỉ nhận token từ scope.write
                 ApiSecrets = new List<Secret> { new Secret("ScopeSecret".Sha256()) },
                 UserClaims = new List<string> {"role"}
             }
@@ -54,7 +56,7 @@ namespace IdentityServer4.Demo
                     AllowedGrantTypes = GrantTypes.ClientCredentials,
                     ClientSecrets = { new Secret("511536EF-F270-4058-80CA-1C89C192F69A".Sha256()) },
 
-                    AllowedScopes = { "weatherapi", "scope2" }
+                    AllowedScopes = { "scope.read", "scope.write" }
                 },
 
                 // interactive client using code flow + pkce
