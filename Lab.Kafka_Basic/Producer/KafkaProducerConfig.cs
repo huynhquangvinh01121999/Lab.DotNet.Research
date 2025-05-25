@@ -15,7 +15,7 @@ namespace Producer
             var config = new ProducerConfig
             {
                 BootstrapServers = configuration["KafkaConfig:BootstrapServers"],
-                MessageSendMaxRetries = 3, // Số lần thử lại khi gửi tin nhắn thất bại,
+                //MessageSendMaxRetries = 3, // Số lần thử lại khi gửi tin nhắn thất bại,
                 //MessageTimeoutMs = 100 // Thời gian timeout khi gửi message
             };
 
